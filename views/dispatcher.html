@@ -12,13 +12,13 @@
 <body>
   <div id="orders">
     <div id="orderList">
-      <div v-for="(order, key) in orders">
-        #{{ key }}: {{ order.orderItems.join(", ") }}
+      <div v-for="order in orders">
+        <li>{{ orders.orderItems}}</li>
       </div>
     </div>
     <div id="dots">
-        <div v-for="(order, key) in orders" v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
-          {{ key }}
+        <div v-for="order in orders" v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
+          <p>T</p>
         </div>
     </div>
   </div>
