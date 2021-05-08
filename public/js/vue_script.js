@@ -20,6 +20,7 @@ function GetKundInfo(){
      gender = gender_list[i].value;
     }
   }
+  //var location = document.getElementById("location").value;
   var order = [email, full_name, payment, gender]
   return order;
 }
@@ -34,16 +35,19 @@ function GetSelsectedBurgers(){
   }
   return selectedBurgers;
 }
+// function GetLocation(){
+//   var x =
+// }
 
 
 var product1 = new MenuItem('BurgerSauosss', 500, true, true, false, "https://commentform.marketforce.com/images/BK-WebComment/BB_WHOPPER-v1.png" )
-var product2 = new MenuItem('BurgerVegan', 400, false, false, true, "http://worldartsme.com/images/safari-grass-clipart-1.jpg" )
+var product2 = new MenuItem('BurgerVegan', 400, false, false, true, "https://huggysbar.com/wp-content/uploads/2019/06/Classic-Burger.png" )
 var product3 = new MenuItem('BurgerSauosss2', 500, true, true, false, "https://commentform.marketforce.com/images/BK-WebComment/BB_WHOPPER-v1.png" )
 var product4 = new MenuItem('BurgerPlain', 500, true, true, false, "https://lh3.googleusercontent.com/i-vHb3CryeDkJrTydwmJFJ1M1HrFtjAGIDC5xI7wI7bkOqV_iV0Zpr6jtm-9Lmv6n1pgkMBhJHSb2Ef1XMxLEQ=s400" )
-var product5 = new MenuItem('BurgerX2', 500, true, true, true, "http://wendys.ge/file.helix?i=e12fd6e5-d7d8-491a-afad-0a0c6c359ca2&r=P" )
+var product5 = new MenuItem('BurgerX2', 500, true, true, true, "https://www.yohburger.com/wp-content/uploads/empire-state-burger.png" )
 
 
-
+window.onload = function(){
  var vm = new Vue({
   el: '#VueContainer',
   data: {
@@ -57,27 +61,29 @@ var product5 = new MenuItem('BurgerX2', 500, true, true, true, "http://wendys.ge
     [product1, product2, product3, product4, product5],
     clicked: false,
     orders: {},
-  //  newOrder:{}
+    newOrder:{}
   },
 
-//   created: function () {
-//     socket.on('initialize', function (data) {
-//       this.orders = data.orders;
-//     }.bind(this));
-//
-//     socket.on('currentQueue', function (data) {
-//       this.orders = data.orders;
-//     }.bind(this));
-//
-// },
+  created: function () {
+    socket.on('initialize', function (data) {
+      this.orders = data.orders;
+    }.bind(this));
+
+    socket.on('currentQueue', function (data) {
+      this.orders = data.orders;
+    }.bind(this));
+
+},
     methods: {
-        ButtonPressed: function() {
+        ButtonPressed: async function() {
           console.log("Button clicked!");
           this.clicked = true;
           console.log(this.clicked);
           this.KundInfo = GetKundInfo();
+          console.log(this.KundInfo);
           this.SelectedBurgers = GetSelsectedBurgers();
-          this.addOrder();
+          console.log(this.SelectedBurgers);
+        await this.addOrder();
 
 
 
@@ -88,22 +94,26 @@ var product5 = new MenuItem('BurgerX2', 500, true, true, true, "http://wendys.ge
     //    }, 0);
     //    return lastOrder + 1;
     //  },
-     addOrder: function (event) {
+     addOrder: async function (event) {
        console.log(event);
-       socket.emit("addOrder", { details: this.newOrder,
+       await socket.emit("addOrder", { details: this.orders.details,
                                  orderItems: this.SelectedBurgers,
                                  orderInfo: this.KundInfo
                                });
 
+                               console.log(this.KundInfo);
      },
      displayOrder: function(event){
        console.log(event);
-       this.orders = ({details: { x: event.clientX-10 - event.currentTarget.getBoundingClientRect().left,
-           y: event.clientY-10 - event.currentTarget.getBoundingClientRect().top},
+       this.orders = ({details: {
+          x: event.clientX-10 - event.currentTarget.getBoundingClientRect().left,
+          y: event.clientY-10 - event.currentTarget.getBoundingClientRect().top},
 
 
        })
        console.log(this.orders);
+       console.log(this.newOrder);
+       console.log(this.orders.details.x);
      }
    }
 
@@ -111,3 +121,4 @@ var product5 = new MenuItem('BurgerX2', 500, true, true, true, "http://wendys.ge
 
 
  })
+}
