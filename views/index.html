@@ -1,9 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>DELI-VERY</title>
-    </head>
-    <body>
-        <h1>Hello World!!!</h1>
-    </body>
+<head id="Title">
+
+  <script src="/socket.io/socket.io.js" defer></script>
+  <script src="js/deli-very.js" defer></script>
+  <script src="js/js_script.js"defer></script>
+
+  <script src="https://vuejs.org/js/vue.js"defer></script>
+  <link rel="stylesheet" type="text/css" href="css/reset.css">.
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <title>RawSaousss</title>
+  <meta charset="utf-8"/>
+  <script src="js/vue_script.js"defer></script>
+
+</head>
+<div id="VueContainer">
+  <body>
+    <main>
+
+      <header id="headlinesection">
+        <img id="headerImg" src="https://images.photowall.com/products/64284/white-wash-brick-wall.jpg?h=699&q=85">
+        <h1 id="SiteTitle">Välkommen till BurgerSauosss</h1>
+      </header>
+
+      <section id="OrderSection">
+        <h2 id="OrderSectionTitle">Välj burgare</h2>
+
+        <div class="wrapper" align="center">
+          <div v-for="item in Menu">
+            <li>{{item.name}}</li>
+            <img :src="item.img" width="200"></img><br>
+            <input type="checkbox" name="checkbox" :value="item.name"> Choose Burger
+
+            <li>{{item.Kcal + "Kcal"}}</li>
+            <li v-if= "item.gluten">Contains Gluten</li>
+            <li v-if="item.lactose">Contains Lactose</li>
+            <li v-if="item.nuts">Contains Nuts</li>
+
+
+          </div>
+        </div>
+
+
+      </section>
+
+      <section id="Contact">
+        <h2>Customer Information</h2>
+        <p>Neccessary delivery information</p>
+
+        <form class="ContactInfo" action="index.html" method="post">
+
+          <p>
+            <label for="full name">Full name</label><br>
+            <input type="text" id="full name" name="fn" required="required" placeholder="First and last name">
+          </p>
+
+          <p>
+            <label for="email">Email address</label><br>
+            <input type="email" id="email" name="em" required="required" placeholder="E-mail address">
+          </p>
+
+
+
+
+
+          <p>
+            <label for="Payment">Payment options</label><br>
+            <select id="Payment" name="Payment options">
+
+              <option>Creditcard</option>
+              <option>Cash</option>
+              <option>Swish</option>
+              <option>Paypal</option>
+            </select>
+          </p>
+
+          <p>
+            <input type="radio" name="gender" value="Undefined" checked="checked"> Undefined<br>
+            <input type="radio" name="gender" value="Male"> Male<br>
+            <input type="radio" name="gender" value="Female"> Female<br>
+          </p>
+        </form>
+
+      </section>
+    <!-- <section id="map"> -->
+
+        <h1> Click in the map! </h1>
+        <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
+        <div class="view-box">
+          <div id="dots" v-on:click="displayOrder">
+            <div
+            v-for="order in orders"
+              v-bind:style="{ left: orders.details.x + 'px', top: orders.details.y + 'px'}">
+            <p>T</p>
+          </div>
+        </div>
+      </div>
+
+    <!-- </section> -->
+
+
+
+    <button id="SubmitButton" v-on:click="ButtonPressed()" type="submit"><img src="https://images-na.ssl-images-amazon.com/images/I/418wK%2B6vaQL.png" width='50'></button>
+
+    <section id="CustomerInformation" v-if="clicked">
+      <li>{{"Email:" + KundInfo[0]}}</li>
+      <li>{{"Full name:" + KundInfo[1]}}</li>
+      <li>{{"Payment method:" + KundInfo[2]}}</li>
+      <li>{{"Gender:" + KundInfo[3]}}</li>
+      <li>{{"Your selected burgers:" + SelectedBurgers}}</li>
+
+      
+
+    </section>
+
+
+
+  </main>
+
+</div>
+<footer>
+  <h4><br> Contact Information: Don't call me </h4>
+</footer>
+</body>
 </html>

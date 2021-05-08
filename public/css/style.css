@@ -1,0 +1,158 @@
+
+body {
+    font-family: "Courier New";
+    font-weight: bold;
+    color: rgb(50 0 300);
+}
+#headlinesection {
+  color: black;
+  font-size: 50px;
+  text-align: center;
+  overflow:hidden;
+  height: 300px;
+  }
+#headerImg{
+  opacity: 0.8;
+  width: 100%;
+  height: auto;
+
+}
+#SiteTitle{
+  position: absolute;
+  padding-left: 19%;
+  padding-right: 18%;
+  margin-top: -50%;
+}
+
+
+
+
+#OrderSectionTitle{
+  text-align: center;
+  font-size: 30px;
+  padding: 10px;
+}
+
+#OrderSection{
+  text-align: center;
+  color: white;
+  background-color: black;
+  margin-bottom: 5%;
+  border: 2px dashed rgb(500 0 50);
+
+
+}
+
+#Contact {
+  margin-left: 5%;
+  margin-right: 5%;
+  border: 2px dashed rgb(50 0 300);
+  padding-left: 15px;
+
+
+
+}
+#ContactInfo {
+  margin-left: 10%;
+}
+
+#SubmitButton{
+  margin: 3%;
+}
+#SubmitButton:hover {
+  background-color: red;
+  cursor:pointer;
+  margin-left: 5%;
+  width: 20%;
+
+
+}
+#Gluten {
+  color: red;
+}
+#Vegan {
+  color: green;
+}
+#nuts {
+  color: red;
+}
+#Burger1{
+  padding: 10px;
+}
+#VeganB{
+  padding: 10px;
+}
+#Burger2{
+  padding: 10px;
+
+}
+
+.wrapper {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 33% 33% 33%;
+
+  background-color: black;
+  color: #444;
+
+   }
+
+   .Burger {
+    background-color: black;
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+
+}
+
+.a {
+    grid-column: 1;
+    grid-row:1 / span 3;
+}
+.b {
+    grid-column: 2 ;
+    grid-row: 1 / span 3;
+}
+.c {
+    grid-column: 3 ;
+    grid-row: 1 / Span 3 ;
+}
+.view-box {
+	width: 90%;
+	height: 50vh;
+	margin: 1em auto;
+	overflow: scroll;
+	border: 1px solid rgba(0,0,0,0.4);
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+#dots {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	background: url(/img/polacks.jpg);
+	background-repeat: no-repeat;
+	width:1920px;
+	height: 1078px;
+	cursor: crosshair;
+}
+
+#dots div {
+	position: absolute;
+	background: black;
+	color: white;
+	border-radius: 10px;
+	width:20px;
+	height:20px;
+	text-align: center;
+}
+
+#orderList {
+	top:1em;
+	left:1em;
+	position: absolute;
+	z-index: 2;
+	color:black;
+	background: rgba(255,255,255, 0.5);
+	padding: 1em;
+}
