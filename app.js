@@ -8,7 +8,7 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require('path');
- 
+
 // Pick arbitrary port for server
 var port = 3000;
 app.set('port', (process.env.PORT || port));
@@ -21,16 +21,13 @@ app.use('/vue', express.static(path.join(__dirname, '/node_modules/vue/dist/')))
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'views/index.html'));
 });
-// Serve map.html as /map
-app.get('/map', function (req, res) {
-  res.sendFile(path.join(__dirname, 'views/map.html'));
-});
+// Serve map.html as /map ...removed it
 // Serve dispatcher.html as /dispatcher
 app.get('/dispatcher', function (req, res) {
   res.sendFile(path.join(__dirname, 'views/dispatcher.html'));
 });
 
-// Store data in an object to keep the global namespace clean and 
+// Store data in an object to keep the global namespace clean and
 // prepare for multiple instances of data if necessary
 function Data() {
   this.orders = {};
@@ -40,11 +37,16 @@ function Data() {
   Adds an order to to the queue
 */
 Data.prototype.addOrder = function (order) {
+  console.log(order);
   //Store the order in an "associative array" with orderId as key
   this.orders[order.orderId] = order;
+  console.log(this.orders[order.orderId]);
+
+
 };
 
 Data.prototype.getAllOrders = function () {
+  console.log(this.orders);
   return this.orders;
 };
 
@@ -61,7 +63,14 @@ io.on('connection', function (socket) {
     io.emit('currentQueue', { orders: data.getAllOrders() });
   });
 
-});
+//   socket.on('initialize', function (data) {
+//     this.orders = data.orders;
+//   }.bind(this));
+//
+//   socket.on('currentQueue', function (data) {
+//     this.orders = data.orders;
+//   }.bind(this));
+ });
 
 var server = http.listen(app.get('port'), function () {
   console.log('Server listening on port ' + app.get('port'));

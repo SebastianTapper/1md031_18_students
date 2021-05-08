@@ -4,6 +4,7 @@
 'use strict';
 var socket = io();
 
+window.onload = function(){
 var vm = new Vue({
   el: '#dots',
   data: {
@@ -36,3 +37,4 @@ var vm = new Vue({
     }
   }
 });
+}

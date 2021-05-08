@@ -13,21 +13,13 @@
   <meta charset="utf-8"/>
   <script src="js/vue_script.js"defer></script>
 
-
-
-
-
-
 </head>
-
 <div id="VueContainer">
-
-
   <body>
     <main>
 
       <header id="headlinesection">
-        <img id="headerImg" src="https://www.thonhotels.com/siteassets/hoteller/norge/gardermoen/thon-hotel-oslo-airport/mat-og-drikke/bar-bassit/thon-hotel-oslo-airport-bar-bassit-5.jpg">
+        <img id="headerImg" src="https://images.photowall.com/products/64284/white-wash-brick-wall.jpg?h=699&q=85">
         <h1 id="SiteTitle">Välkommen till BurgerSauosss</h1>
       </header>
 
@@ -47,9 +39,6 @@
 
 
           </div>
-
-
-
         </div>
 
 
@@ -102,7 +91,7 @@
           <div id="dots" v-on:click="displayOrder">
             <div
             v-for="order in orders"
-            v-bind:style="{ left: orders.details.x + 'px', top: orders.details.y + 'px'}">
+              v-bind:style="{ left: orders.details.x + 'px', top: orders.details.y + 'px'}">
             <p>T</p>
           </div>
         </div>
@@ -112,7 +101,7 @@
 
 
 
-    <button id="SubmitButton" v-on:click="ButtonPressed()" type="submit"><img src="https://static1.squarespace.com/static/5963f7c372af654bbd9e82fa/t/5b240a51f950b7b369470ba1/1529088595869/order.jpg" width='150'></button>
+    <button id="SubmitButton" v-on:click="ButtonPressed()" type="submit"><img src="https://images-na.ssl-images-amazon.com/images/I/418wK%2B6vaQL.png" width='50'></button>
 
     <section id="CustomerInformation" v-if="clicked">
       <li>{{"Email:" + KundInfo[0]}}</li>
@@ -120,6 +109,8 @@
       <li>{{"Payment method:" + KundInfo[2]}}</li>
       <li>{{"Gender:" + KundInfo[3]}}</li>
       <li>{{"Your selected burgers:" + SelectedBurgers}}</li>
+
+      
 
     </section>
 
